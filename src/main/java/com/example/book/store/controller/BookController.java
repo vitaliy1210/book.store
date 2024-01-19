@@ -1,10 +1,11 @@
 package com.example.book.store.controller;
 
 import com.example.book.store.dto.BookDto;
+import com.example.book.store.dto.BookSearchParameters;
 import com.example.book.store.dto.CreateBookRequestDto;
 import com.example.book.store.service.BookService;
 import java.util.List;
-import java.util.Map;
+import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -16,14 +17,11 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
+@RequiredArgsConstructor
 @RestController
 @RequestMapping("/api/books")
 public class BookController {
     private final BookService bookService;
-
-    public BookController(BookService bookService) {
-        this.bookService = bookService;
-    }
 
     @PostMapping
     public BookDto createBook(@RequestBody CreateBookRequestDto bookRequestDto) {
@@ -52,7 +50,7 @@ public class BookController {
     }
 
     @GetMapping("/search")
-    public List<BookDto> searchBooks(@RequestBody Map<String, List<String>> params) {
+    public List<BookDto> searchBooks(BookSearchParameters params) {
         return bookService.search(params);
     }
 }
