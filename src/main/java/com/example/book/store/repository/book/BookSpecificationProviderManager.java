@@ -4,9 +4,9 @@ import com.example.book.store.exception.NoSuchSpecificationProviderException;
 import com.example.book.store.model.Book;
 import com.example.book.store.repository.SpecificationProvider;
 import com.example.book.store.repository.SpecificationProviderManager;
+import java.util.List;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
-import java.util.List;
 
 @RequiredArgsConstructor
 @Component
